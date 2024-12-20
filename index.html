@@ -26,7 +26,11 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
         <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500&amp;family=Poppins&amp;display=swap" rel="stylesheet">      
-    
+        <script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+
     </head>
     <body class="appear-animate dark-mode">
         
@@ -833,74 +837,98 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
         <script src="js/plugins.js"></script>
         <script src="js/jquery.ajaxchimp.min.js"></script>             
         <!-- <script src="js/contact-form.js"></script>         -->
-        <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-        <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            emailjs.init("hbaO-1i383bwXKUtg"); // Replace with your EmailJS user ID
-            console.log('EmailJS initialized successfully'); // Log successful initialization
+        <script src="js/all.js"></script> 
+        <script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
 
-            const counters = document.querySelectorAll(".count-number");
-            const speed = 50; // Animation speed (lower is faster)
-
-            const countUp = () => {
-                counters.forEach((counter) => {
-                const updateCount = () => {
-                    const target = +counter.getAttribute("data-target");
-                    const count = +counter.innerText;
-
-                    const increment = target / speed;
-
-                    if (count < target) {
-                    counter.innerText = Math.ceil(count + increment);
-                    setTimeout(updateCount, 30);
-                    } else {
-                    counter.innerText = target;
-                    }
-                };
-
-                updateCount();
-                });
-            };
-
-            // Trigger count-up on scroll
-            const observer = new IntersectionObserver(
-                (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                    countUp();
-                    observer.unobserve(entry.target);
-                    }
-                });
-                },
-                { threshold: 0.5 }
-            );
-
-            counters.forEach((counter) => observer.observe(counter));
-
-            // Handle form submission
-            document.getElementById("contact_form").addEventListener("submit", function (event) {
-                event.preventDefault();
-
-                const name = document.getElementById("name").value;
-                const email = document.getElementById("email").value;
-                const message = document.getElementById("message").value;
-
-                const templateParams = {
-                    from_name: name,
-                    from_email: email,
-                    message: message
-                };
-
-                emailjs.send('service_7xa2mjj', 'template_8swtmw8', templateParams)
-                    .then(function(response) {
-                        console.log('SUCCESS!', response.status, response.text);
-                        alert('Email sent successfully!');
-                    }, function(error) {
-                        console.error('FAILED...', error);
-                        alert('Failed to send email.');
-                    });
-            });
-        });
+        <script type="text/javascript">
+            (function(){
+                emailjs.init("hbaO-1i383bwXKUtg"); // Replace 'your_user_id' with your actual user ID from EmailJS
+            })();
         </script>
         <!-- End JS -->       
-    </body></html>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                
+                emailjs.init("hbaO-1i383bwXKUtg"); // Replace with your EmailJS user ID
+                console.log('EmailJS initialized successfully'); // Log successful initialization
+    
+                const counters = document.querySelectorAll(".count-number");
+                const speed = 50; // Animation speed (lower is faster)
+    
+                const countUp = () => {
+                    counters.forEach((counter) => {
+                    const updateCount = () => {
+                        const target = +counter.getAttribute("data-target");
+                        const count = +counter.innerText;
+    
+                        const increment = target / speed;
+    
+                        if (count < target) {
+                        counter.innerText = Math.ceil(count + increment);
+                        setTimeout(updateCount, 30);
+                        } else {
+                        counter.innerText = target;
+                        }
+                    };
+    
+                    updateCount();
+                    });
+                };
+    
+                // Trigger count-up on scroll
+                const observer = new IntersectionObserver(
+                    (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                        countUp();
+                        observer.unobserve(entry.target);
+                        }
+                    });
+                    },
+                    { threshold: 0.5 }
+                );
+    
+                counters.forEach((counter) => observer.observe(counter));
+    
+                // Handle form submission
+                document.getElementById("contact_form").addEventListener("submit", function (event) {
+                    event.preventDefault();
+    
+                    const name = document.getElementById("name").value;
+                    const email = document.getElementById("email").value;
+                    const message = document.getElementById("message").value;
+    
+                    const templateParams = {
+                        from_name: name,
+                        from_email: email,
+                        message: message
+                    };
+    
+                    emailjs.send('service_7xa2mjj', 'template_8swtmw8', templateParams)
+                        .then(function(response) {
+                            console.log('SUCCESS!', response.status, response.text);
+                            document.getElementById('name').value = '';
+                            console.log(document.getElementById('name').value);
+                            
+                            document.getElementById('email').value = '';
+                            document.getElementById('message').value = '';
+                            // document.getElementById("contact_form").reset(); // Clear the form
+                            // alert('Email sent successfully!');
+                        }, function(error) {
+                            console.error('FAILED...', error);
+                            alert('Failed to send email.');
+                        });
+                });
+            });
+            </script>
+          
+            
+    <script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+
+</body></html>
