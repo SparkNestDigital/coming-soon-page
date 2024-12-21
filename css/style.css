@@ -3514,7 +3514,7 @@ a.logo:hover{
     color: rgba(0,0,0, .9);
 }
 nav.container {
-    max-width: 1470px;
+    max-width: 1600px;
 }
 
 /*
@@ -5802,6 +5802,46 @@ img.services-image{
 .light-content .services-2-button{
     border-color: rgba(255,255,255, .5); 
 }
+
+
+.gradient-border {
+    position: relative;
+    /* display: inline-block; */
+   
+   
+  
+    
+    border: none; /* No default border */
+    border-radius: 200px; /* Rounded corners */
+    /* z-index: 1; Ensure the button is above the pseudo-element */
+  }
+  
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 200px; /* Match the button's border-radius */
+    background: linear-gradient(90deg, rgba(255, 0, 150, 1), rgba(0, 150, 255, 1)); /* Gradient for border */
+    z-index: -3; /* Position behind the button */
+  }
+  .gradient-border::after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    border-radius: 200px; /* Match the button's border-radius */
+    background: #111; /* Gradient for border */
+    background-clip: padding-box; /* Clip the gradient to the border */
+    z-index: -2; /* Position behind the button but above the border */
+  }
+  
+
+
 .light-content .services-2-descr{
     background: var(--color-dark-1);
 }
@@ -12491,8 +12531,11 @@ span.wow.charsAnimIn.words.chars.splitting.animated{
   .projects-count-section .container {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 40px;
     flex-wrap: wrap;
+    margin:20px auto;
+
   }
   
   .count-box {
@@ -12500,8 +12543,9 @@ span.wow.charsAnimIn.words.chars.splitting.animated{
     background: rgba(255, 255, 255, 0.1);
     padding: 20px;
     border-radius: 15px;
-    box-shadow: rgb(190 123 183 / 35%) 0px 5px 15px;
+    box-shadow: rgb(190 123 183 / 35%) 5px 6px 15px;
     transition: transform 0.3s;
+    transform: scale(1);
   }
   
   .count-box:hover {
@@ -12529,4 +12573,13 @@ span.wow.charsAnimIn.words.chars.splitting.animated{
 
   @media (max-width: 991px) {
     .section-features{display: block;}
+  }
+
+  span .char{
+    background: linear-gradient(to bottom, #4158D0 0.21%, #C850C0 52.21%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline;
+
   }
